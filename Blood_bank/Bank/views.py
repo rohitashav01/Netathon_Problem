@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
 # Create your views here.
-from Bank.forms import AppUserForm,DiseaseForm
+from Bank.forms import AppUserForm,DiseaseForm, ChatForm
 from .models import ProfileUser,BloodCamp,Diseases
 from django.core.mail import send_mail
 
@@ -84,3 +84,23 @@ def show_camps(request):
     camps = BloodCamp.objects.all()
     print(request.user)
     return render(request,'avail_camps.html', {'camps': camps})
+
+def donor_list(request):
+    # import pdb;pdb.set_trace()
+    user = ProfileUser.objects.filter(is_donor=True)
+    print(user)
+    return render(request, 'donor.html', {'user':user})
+
+
+def chat_communication(request, **kwargs):
+    form  = ChatForm()
+    if request.method  == 'POST':
+        if id:= kwargs.get('id'):
+            form = ChatForm(request.POST)
+            user = ProfileUser.objects.get(id=id)
+            print(user)
+            if form.is_valid():
+                instance = form.save(commit=False)
+                instance.user_id = user.pk
+                instance.save()
+

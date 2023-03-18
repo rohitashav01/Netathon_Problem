@@ -1,5 +1,5 @@
 from django import forms
-from .models import ProfileUser,Diseases
+from .models import ProfileUser,Diseases, Chat
 from django.forms import ModelForm, TextInput, EmailInput, PasswordInput,Select,CheckboxInput
 
 class AppUserForm(forms.ModelForm):
@@ -73,5 +73,9 @@ class DiseaseForm(forms.ModelForm):
             }
 
 
+class ChatForm(forms.ModelForm):
+    class Meta:
+        model = Chat
+        fields = ['message']
 
     

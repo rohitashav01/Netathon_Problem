@@ -68,60 +68,32 @@
                             <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                {{form.username}}
-                                <label class="form-label" for="form3Example1c">Enter Your Name</label>
+                                <input type="text" name="camp_name" id="form3Example1c" class="form-control" />
+                                <label class="form-label" for="form3Example1c">Add a new Camp</label>
                             </div>
                             </div>
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form.age}}
-                                    <label class="form-label" for="form3Example1c">Enter Your Age</label>
+                                    <input type="text" name="city" id="form3Example1c" class="form-control" />
+                                    <label class="form-label" for="form3Example1c">Add City</label>
                                 </div>
                                 </div>
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form.email}}
-                                    <label class="form-label" for="form3Example3c">Your Email</label>
-                                </div>
-                                </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    {{form.gender}}
-                                    <!-- <select name='{{form.gender}}' id="form3Example3c" class="form-control" >
-                                        <option id = "form3Example3c" value="male">MALE</option>
-                                        <option id = "form3Example3c" value="female">FEMALE</option>
-                                    </select> -->
-                                    <label class="form-label" for="form3Example3c">Your Gender</label>
+                                    <input type="text" name="location" id="form3Example3c" class="form-control" />
+                                    <label class="form-label" for="form3Example3c">Add Location</label>
                                 </div>
                             </div>
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                 <div class="form-outline flex-fill mb-0">
-                                    {{form.blood_type}}
-                                    <!-- <select name='{{form.blood_type}}' id="form3Example3c" class="form-control" >
-                                        <option id = "form3Example3c" value="a+">A+</option>
-                                        <option id = "form3Example3c" value="a-">A-</option>
-                                        <option id = "form3Example3c" value="b+">B+</option>
-                                        <option id = "form3Example3c" value="b-">B-</option>
-                                        <option id = "form3Example3c" value="ab+">AB+</option>
-                                        <option id = "form3Example3c" value="ab-">AB-</option>
-                                        <option id = "form3Example3c" value="o+">O+</option>
-                                        <option id = "form3Example3c" value="o-">O-</option>
-                                    </select> -->
-                                    <label class="form-label" for="form3Example3c">Your Blood Type</label>
+                                    <input type="datetime-local" name="organise_date" id="form3Example3c" class="form-control" />
+                                    <label class="form-label" for="form3Example3c">Organise Date</label>
                                 </div>
                             </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                            <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                            <div class="form-outline flex-fill mb-0">
-                                {{form.password}}
-                                <!-- <input type="password" name='{{form.password}}' id="form3Example3c" class="form-control" /> -->
-                                <label class="form-label" for="form3Example3c">Enter Password</label>
-                            </div>
-                            </div>
+                           
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                       </form>

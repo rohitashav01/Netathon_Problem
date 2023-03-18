@@ -19,7 +19,7 @@ BLOOD_CHOICES = [
 
 class ProfileUser(AbstractUser):
     username = models.CharField(max_length=20)
-    age = models.IntegerField(blank = True)
+    age = models.IntegerField(blank = True,null=True)
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
     blood_type = models.CharField(max_length=4,choices = BLOOD_CHOICES,default='a+')

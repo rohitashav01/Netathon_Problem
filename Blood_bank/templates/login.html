@@ -14,11 +14,12 @@
       <!-- Navbar brand -->
       <a class="navbar-brand me-2" href="https://www.netsolutions.com/">
         <img
-          src="https://www.netsolutions.com/assets/images/net_solutions_logo_black.svg"
-          alt="Logo of Net Solutions India Pvt. Ltd."
-          height="16"
+          src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg"
+          alt="Blood Donor System Image"
+          height="60"
+          width="100"
           loading="lazy"
-          style="margin-top: -1px;"
+          style="margin-top: -1px;margin-left:-250px;"
         />
       </a>
   
@@ -44,6 +45,12 @@
           </li>
         </ul>
         <!-- Left links -->
+          <a href = "{% url 'new-user' %}" type="button" class="btn btn-primary me-3">
+            Register
+          </a>
+          <a href = "{% url 'logout' %}" type="button" class="btn btn-primary me-3">
+            Logout
+          </a>
         </div>
       </div>
       <!-- Collapsible wrapper -->
@@ -60,7 +67,7 @@
                   <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
       
-                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
+                      <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
                      <form action="" method="post">
                         {% csrf_token %}
                         <form class="mx-1 mx-md-4">
@@ -68,50 +75,11 @@
                             <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">
-                                <input type="text" name="username" id="form3Example1c" class="form-control" />
-                                <label class="form-label" for="form3Example1c">Enter Your Name</label>
+                                <input type="text" name="email" id="form3Example1c" class="form-control" />
+                                <label class="form-label" for="form3Example1c">Enter E-mail</label>
                             </div>
                             </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <input type="text" name="age" id="form3Example1c" class="form-control" />
-                                    <label class="form-label" for="form3Example1c">Enter Your Age</label>
-                                </div>
-                                </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <input type="email" name="email" id="form3Example3c" class="form-control" />
-                                    <label class="form-label" for="form3Example3c">Your Email</label>
-                                </div>
-                                </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <select name="gender" id="form3Example3c" class="form-control" >
-                                        <option id = "form3Example3c" value="male">MALE</option>
-                                        <option id = "form3Example3c" value="female">FEMALE</option>
-                                    </select>
-                                    <label class="form-label" for="form3Example3c">Your Gender</label>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row align-items-center mb-4">
-                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                <div class="form-outline flex-fill mb-0">
-                                    <select name="blood_type" id="form3Example3c" class="form-control" >
-                                        <option id = "form3Example3c" value="a+">A+</option>
-                                        <option id = "form3Example3c" value="a-">A-</option>
-                                        <option id = "form3Example3c" value="b+">B+</option>
-                                        <option id = "form3Example3c" value="b-">B-</option>
-                                        <option id = "form3Example3c" value="ab+">AB+</option>
-                                        <option id = "form3Example3c" value="ab-">AB-</option>
-                                        <option id = "form3Example3c" value="o+">O+</option>
-                                        <option id = "form3Example3c" value="o-">O-</option>
-                                    </select>
-                                    <label class="form-label" for="form3Example3c">Your Blood Type</label>
-                                </div>
-                            </div>
+        
                             <div class="d-flex flex-row align-items-center mb-4">
                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                             <div class="form-outline flex-fill mb-0">

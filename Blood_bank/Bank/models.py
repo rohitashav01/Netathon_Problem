@@ -23,7 +23,7 @@ class ProfileUser(AbstractUser):
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
     blood_type = models.CharField(max_length=4,choices = BLOOD_CHOICES,default='a+')
-    # password = models.CharField(max_length=50)
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [ 'username','first_name', 'last_name']
 

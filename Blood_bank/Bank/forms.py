@@ -1,10 +1,10 @@
 from django import forms
-from .models import AppUser
+from .models import ProfileUser
 
 
 class AppUserForm(forms.ModelForm):
     class Meta:
-        model = AppUser
-        fields = ['name','age','email','gender','blood_type','password']
+        model = ProfileUser
+        fields = ['username','age','email','gender','blood_type']
 
     

@@ -13,21 +13,13 @@ def add_user(request):
     if request.method == 'POST':
             form = AppUserForm(request.POST)
             print(request.POST)
-            # username = request.POST.get('username')
-            # email = request.POST.get('email')
-            # age = request.POST.get('age')
-            # gender = request.POST.get('gender')
-            # blood_type = request.POST.get('blood_type')
-            # password = request.POST.get('password')
-            print(request.POST['password'])
             if form.is_valid():
-                # ProfileUser.set_password(request.POST['password'])
                 form.save()
                 return redirect('home')
     return render(request,'new_user.html',{'form':form})
 
 def user_login(request):
-    if request.method == 'POST':
+    if request.method == 'POST':                           
         email = request.POST['email']
         password = request.POST['password']
         user_main = authenticate(request,email=email,password=password)
@@ -59,7 +51,13 @@ def admin_camp(request):
         city = request.POST.get('city')
         location = request.POST.get('location')
         organise_date = request.POST.get('organise_date')
-        camp = BloodCamp.objects.get(camp_name=camp_name,city=city,location=location,organise_date=organise_date)
+        camp = BloodCamp.objects.create(camp_name=camp_name,city=city,location=location,organise_date=organise_date)
         camp.save()
         return redirect('home')
     return render(request,'camp.html',{'form':form})
+
+
+def show_camps(request):
+    camps = BloodCamp.objects.all()
+    print(request.user)
+    return render(request,'avail_camps.html', {'camps': camps})

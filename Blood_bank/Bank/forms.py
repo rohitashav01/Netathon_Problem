@@ -1,6 +1,6 @@
 from django import forms
-from .models import ProfileUser
-from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, ImageField
+from .models import ProfileUser,Diseases
+from django.forms import ModelForm, TextInput, EmailInput, PasswordInput,Select,CheckboxInput
 
 class AppUserForm(forms.ModelForm):
     def save(self, commit=True):
@@ -12,7 +12,7 @@ class AppUserForm(forms.ModelForm):
         return user
     class Meta:
         model = ProfileUser
-        fields = ['username','age','email','gender','blood_type','password']
+        fields = ['username','age','email','gender','blood_type','password','is_donor']
         widgets = {
             'username': TextInput(attrs={
                 'class': "form-control",
@@ -26,11 +26,11 @@ class AppUserForm(forms.ModelForm):
                 'class': "form-control",
                 'placeholder': 'email'
             }),
-            'gender': TextInput(attrs={
+            'gender': Select(attrs={
                 'class': "form-control",
                 'placeholder': 'gender'
                 }),
-            'blood_type': TextInput(attrs={
+            'blood_type': Select(attrs={
                 'class': "form-control",
                 'placeholder': 'Blood Group'
                 }),
@@ -38,9 +38,39 @@ class AppUserForm(forms.ModelForm):
                 'class': "form-control",
                 'placeholder': 'Password'
                 }),
+            'is_donor': CheckboxInput(attrs={
+                'class': "form-check",
+            }),
         }
 
 
+class DiseaseForm(forms.ModelForm):
+        class Meta:
+            model = Diseases
+            fields = ['aids','asthma','bleeding_disorder','cancer','heart_disease','hepatitis_b_or_c','mad_cow']
+            widgets = {
+                'aids': CheckboxInput(attrs={
+                    'class': "form-check",
+                    }),
+                'asthma': CheckboxInput(attrs={
+                    'class': "form-check",
+                    }),
+                'bleeding_disorder': CheckboxInput(attrs={
+                    'class': "form-check",
+                }),
+                'cancer': CheckboxInput(attrs={
+                    'class': "form-check",
+                    }),
+                'heart_disease': CheckboxInput(attrs={
+                    'class': "form-check",
+                    }),
+                'hepatitis_b_or_c':CheckboxInput(attrs={
+                    'class': "form-check",
+                    }),
+                'mad_cow': CheckboxInput(attrs={
+                    'class': "form-check",
+                }),
+            }
 
 
 

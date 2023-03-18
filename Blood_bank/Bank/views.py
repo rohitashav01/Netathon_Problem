@@ -3,8 +3,8 @@ from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
 # Create your views here.
-from Bank.forms import AppUserForm
-from .models import ProfileUser,BloodCamp
+from Bank.forms import AppUserForm,DiseaseForm
+from .models import ProfileUser,BloodCamp,Diseases
 from django.core.mail import send_mail
 
 def home_page(request):
@@ -20,10 +20,22 @@ def add_user(request):
                 return redirect('home')
     return render(request,'new_user.html',{'form':form})
 
+def user_disease(request):
+    form = DiseaseForm()
+    if request.method == 'POST':
+        form = DiseaseForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user_id = request.user.id
+            instance.save()
+            return redirect('home')
+    return render(request,'disease.html',{'form':form})
+
 def user_login(request):
     if request.method == 'POST':                           
         email = request.POST['email']
         password = request.POST['password']
+        
         user_main = authenticate(request,email=email,password=password)
         print(user_main)
         app_user = authenticate(request,email=email,password=password)
@@ -35,7 +47,8 @@ def user_login(request):
         elif ProfileUser.is_superuser:
             print('this is admin')
             login(request,main_user)
-            return redirect('home')
+            print(request.user.id)
+            return redirect('disease')
         else:
             raise Http404("email or password is incorrect")
     return render(request,'login.html',{})

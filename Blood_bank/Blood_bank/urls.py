@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps
+from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps,user_disease
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page,name='home'),
     path('blood-bank/register',add_user,name='new-user'),
+    path('blood-bank/disease',user_disease,name='disease'),
     path('blood-bank/login',user_login,name='login'),
     path('blood-bank/logout',user_logout,name='logout'),
     path('blood-bank/admin_camp',admin_camp,name='camp'),

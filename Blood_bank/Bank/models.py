@@ -23,6 +23,7 @@ class ProfileUser(AbstractUser):
     email = models.EmailField(max_length=254, unique=True)
     gender = models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
     blood_type = models.CharField(max_length=4,choices = BLOOD_CHOICES,default='a+')
+    is_donor = models.BooleanField(default = False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [ 'username','first_name', 'last_name']
@@ -34,3 +35,17 @@ class BloodCamp(models.Model):
     location = models.CharField(max_length=100)
     organise_date  = models.DateTimeField()
     created_at = models.DateTimeField(auto_now=True)
+
+
+
+class Diseases(models.Model):
+     user = models.ForeignKey(ProfileUser,on_delete=models.CASCADE)
+     aids = models.BooleanField(default=False)
+     asthma = models.BooleanField(default=False)
+     bleeding_disorder = models.BooleanField(default=False)
+     cancer = models.BooleanField(default=False)
+     heart_disease = models.BooleanField(default=False)
+     hepatitis_b_or_c = models.BooleanField(default=False)
+     mad_cow = models.BooleanField(default=False)
+    
+    

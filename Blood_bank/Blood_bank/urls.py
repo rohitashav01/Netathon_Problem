@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Bank.views import add_user
+from Bank.views import add_user,user_login,user_logout,home_page
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',add_user,name='new-user')
+    path('',home_page,name='home'),
+    path('blood-bank/register',add_user,name='new-user'),
+    path('blood-bank/login',user_login,name='login'),
+    path('blood-bank/logout',user_logout,name='logout')
 ]

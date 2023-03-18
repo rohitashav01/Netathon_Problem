@@ -157,6 +157,7 @@
         <!-- Left links -->
   
         <div class="d-flex align-items-center">
+        {% if request.user.is_superuser %}
           <a href="{% url 'login' %}" class="btn btn-primary me-3">
             Login
           </a>
@@ -165,7 +166,21 @@
           </a>
           <a href="{% url 'logout' %}" class="btn btn-primary me-3">
             Logout
-          </a>  
+         </a>
+         <a href="{% url 'camp' %}" class="btn btn-primary me-3">
+            Add a New Camp
+        </a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-primary me-3">
+                Login
+            </a>
+            <a href = "{% url 'new-user' %}" type="button" class="btn btn-primary me-3">
+                Register
+            </a>
+            <a href="{% url 'logout' %}" class="btn btn-primary me-3">
+                Logout
+            </a>
+        {% endif %}
         </div>
       </div>
       <!-- Collapsible wrapper -->

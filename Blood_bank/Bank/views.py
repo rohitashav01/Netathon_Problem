@@ -1,9 +1,11 @@
+from django.conf import settings
 from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
 # Create your views here.
 from Bank.forms import AppUserForm
 from .models import ProfileUser,BloodCamp
+from django.core.mail import send_mail
 
 def home_page(request):
     return render(request,'home.html',{})
@@ -43,7 +45,6 @@ def user_logout(request):
     logout(request)
     return redirect('home')
 
-
 def admin_camp(request):
     form = BloodCamp()
     if request.method == 'POST':
@@ -53,6 +54,15 @@ def admin_camp(request):
         organise_date = request.POST.get('organise_date')
         camp = BloodCamp.objects.create(camp_name=camp_name,city=city,location=location,organise_date=organise_date)
         camp.save()
+
+        user = ProfileUser.objects.filter(is_superuser=False).values()
+        for u in user:
+            print(u)
+            subject = 'welcome to GFG world'
+            message = f'Hi {u["username"]}, thank you for registering in geeksforgeeks.'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [u['email'], ]
+            send_mail( subject, message, email_from, recipient_list )
         return redirect('home')
     return render(request,'camp.html',{'form':form})
 

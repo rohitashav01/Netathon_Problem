@@ -47,4 +47,13 @@ class Diseases(models.Model):
      hepatitis_b_or_c = models.BooleanField(default=False)
      mad_cow = models.BooleanField(default=False)
     
+
+
+class Chat(models.Model):
+     user = models.ForeignKey(ProfileUser,on_delete=models.CASCADE)
+     is_sender = models.BooleanField(default=False)
+     is_receiver = models.BooleanField(default=False)
+     message = models.CharField(max_length=1000)
+     created_at = models.DateTimeField(auto_now=True)
+     
     

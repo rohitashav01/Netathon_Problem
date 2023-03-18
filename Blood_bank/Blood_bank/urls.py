@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from Bank.views import add_user
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',add_user,name='new-user')
 ]

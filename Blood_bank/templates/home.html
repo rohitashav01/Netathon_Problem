@@ -171,6 +171,7 @@
           width="200"
           loading="lazy"
           style="margin-top: -1px;margin-left:-250px;"
+          class = "rounded-circle"
         />
       </a>
       <h3>Donor2You</h3>
@@ -224,6 +225,9 @@
                 </a>
             {% endif %}
         {% endif %}
+        {% if request.user.is_authenticated %}
+                <h4>Welcome:{{request.user.username}}</h4>
+        {% endif %}
         </div>
       </div>
       <!-- Collapsible wrapper -->
@@ -249,10 +253,13 @@
    <div class="card text-center" id="prompt">
        <div class="card-body">
            <h4 class="card-title"><strong>WE ARE HERE FOR HELPING PEOPLE</strong></h4>
-           <p class="card-text">You can give blood at any of our blood donation venues. We have several donor
+           {% if request.user.is_donor %}
+            <p class="card-text">You can give blood at any of our blood donation venues. We have several donor
                centers
                and visit other vanues on various occassions</p>
-           <a href=" {% url 'avail-camps' %} " class="btn btn-danger">Register For Camp</a>
+            
+                <a href=" {% url 'avail-camps' %} " class="btn btn-danger">Register For Camp</a>
+            {% endif %}
        </div>
    </div>
 </div>
@@ -718,8 +725,8 @@
    <!-- Footer Links -->
 
    <!-- Copyright -->
-   <div class="footer-copyright text-center py-3">© 2019 Copyright:
-       <a href="#"> Bonded</a> All Rights Reserved
+   <div class="footer-copyright text-center py-3">© 2023 Copyright:
+       <a href="#">Troubleshooters</a> All Rights Reserved
    </div>
    <!-- Copyright -->
 

@@ -16,13 +16,14 @@
         <img
           src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg"
           alt="Blood Donor System Image"
-          height="60"
-          width="100"
+          height="80"
+          width="200"
           loading="lazy"
           style="margin-top: -1px;margin-left:-250px;"
+          class = "rounded-circle"
         />
       </a>
-  
+      <h3>Donor2You</h3>
       <!-- Toggle button -->
       <button
         class="navbar-toggler"
@@ -45,11 +46,14 @@
           </li>
         </ul>
         <!-- Left links -->
-          <a href = "{% url 'new-user' %}" type="button" class="btn btn-primary me-3">
+          <a href = "{% url 'new-user' %}" type="button" class="btn btn-danger me-3 btn-rounded">
             Register
           </a>
-          <a href = "{% url 'logout' %}" type="button" class="btn btn-primary me-3">
+          <a href = "{% url 'logout' %}" type="button" class="btn btn-danger me-3 btn-rounded">
             Logout
+          </a>
+          <a href = "{% url 'home' %}" type="button" class="btn btn-danger me-3 btn-rounded">
+            Home
           </a>
         </div>
       </div>
@@ -87,14 +91,14 @@
                                 <label class="form-label" for="form3Example3c">Enter Password</label>
                             </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-danger">Submit</button>
                         </form>
                       </form>
                       <br>
                     </div>
                     <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
       
-                      <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
+                        <img src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg" class="img-fluid rounded-circle" alt="Sample image" width="800" height="800">
       
                     </div>
                   </div>

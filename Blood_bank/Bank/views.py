@@ -3,13 +3,29 @@ from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
 from Bank.forms import AppUserForm,DiseaseForm, ChatForm
-from .models import ProfileUser,BloodCamp,Diseases, Chat
+from .models import BloodBank, ProfileUser,BloodCamp,Diseases, Chat
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 
+
 def home_page(request):
-    return render(request,'home.html',{})
+    blood_bank = BloodBank.objects.all()
+    print(request.method)
+    if request.method  == 'POST':
+        print(request.POST)
+        request.session["drop"] = request.POST["dropdown"]
+        return redirect('/search/user')
+    return render(request,'index.html',{'bank':blood_bank,})
+
+def search_user(request):
+    msg=''
+    id = request.session['drop']
+    blood_type_check = BloodBank.objects.get(id=id).blood_type
+    match = ProfileUser.objects.filter(blood_type=blood_type_check)
+    if not match:
+        msg = "No availaible donor with your blood type"       
+    return render(request, 'blood.html', {'blood':match,'msg':msg})
 
 def add_user(request):
     form = AppUserForm()

@@ -200,8 +200,19 @@
            
             <div class="d-flex align-items-center">
                 <div class="input-group m-4">
-                    <input type="search" class="form-control rounded" placeholder="Search for Availaibility" aria-label="Search" aria-describedby="search-addon" />
-                    <button type="button" class="btn btn-outline-danger">Search</button>
+                    
+ <form method="POST">
+    {% csrf_token %}
+    <select name="dropdown" class="form-control rounded" id='selUser' style='width: 200px;'>
+        <option value='0'>Select Blood Group</option> 
+        {%for b in bank %}
+        <option value='{{b.id}}'>{{b.blood_type}}</option> 
+        {% endfor %}
+   </select>
+   <input type="submit" class="btn btn-outline-danger m-2 w-auto">
+
+
+   </form>
                 </div>
             {% if request.user.is_superuser  %}
                 <a href="{% url 'logout' %}" class="btn btn-danger me-3 btn-rounded btn-lg">

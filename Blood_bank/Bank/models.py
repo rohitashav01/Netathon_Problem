@@ -56,5 +56,11 @@ class Chat(models.Model):
      is_receiver = models.BooleanField(default=False)
      message = models.CharField(max_length=1000)
      created_at = models.DateTimeField(auto_now=True)
+
+
+
+class BloodBank(models.Model):
+      blood_type = models.CharField(max_length=4,choices = BLOOD_CHOICES,default='a+')
+
      
     

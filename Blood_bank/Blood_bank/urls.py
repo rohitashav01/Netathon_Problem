@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps,user_disease,donor_list,register_camp,contact_donor
+from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps,user_disease,donor_list,register_camp,contact_donor, search_user
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page,name='home'),
@@ -27,7 +27,8 @@ urlpatterns = [
     path('blood-bank/admin_camp',admin_camp,name='camp'),
     path('blood_bank/availaible_camps',show_camps,name='avail-camps'),
     path('donor/list',donor_list, name='donor-list'),
-    path('donor/<int:id>/contact',contact_donor,name='contact')   
+    path('donor/<int:id>/contact',contact_donor,name='contact'),
+    path('search/user', search_user, name='search_user')   
 ]
 
 

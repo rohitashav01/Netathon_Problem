@@ -24,6 +24,7 @@ class ProfileUser(AbstractUser):
     gender = models.CharField(max_length=6,choices=GENDER_CHOICES,default='male')
     blood_type = models.CharField(max_length=4,choices = BLOOD_CHOICES,default='a+')
     is_donor = models.BooleanField(default = False)
+    mobile_no = models.CharField(max_length=15, default='0')
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = [ 'username','first_name', 'last_name']
 

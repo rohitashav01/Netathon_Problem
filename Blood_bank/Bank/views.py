@@ -4,7 +4,7 @@ from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
 # Create your views here.
 from Bank.forms import AppUserForm,DiseaseForm, ChatForm
-from .models import ProfileUser,BloodCamp,Diseases
+from .models import ProfileUser,BloodCamp,Diseases, Chat
 from django.core.mail import send_mail
 
 def home_page(request):
@@ -102,15 +102,62 @@ def donor_list(request):
     return render(request, 'donor.html', {'user':user})
 
 
-def chat_communication(request, **kwargs):
+def chat_communication(request):
     form  = ChatForm()
+    print(request.method)
     if request.method  == 'POST':
-        if id:= kwargs.get('id'):
             form = ChatForm(request.POST)
-            user = ProfileUser.objects.get(id=id)
+            print(request.user.id)
+            user = ProfileUser.objects.get(id=request.user.id)
             print(user)
             if form.is_valid():
                 instance = form.save(commit=False)
+                if not user.is_donor:
+                    print("donor")
+                    instance.is_receiver = True
+                else:
+                    print("receiver")
+                    instance.is_sender = True
                 instance.user_id = user.pk
                 instance.save()
+            else:
+                print(form.errors)
+                print(form.non_field_errors)
+            return redirect('chat-receiver')
+    return render(request, 'chat.html', {'form':form})
+
+
+def chat_receiver(request):
+    if request.method  == 'GET':
+        chats =  Chat.objects.all()
+    # elif request.method  == 'POST':
+    #         form = ChatForm(request.POST)
+    #         print(request.user.id)
+    #         user = ProfileUser.objects.get(id=request.user.id)
+    #         print(user)
+    #         if form.is_valid():
+    #             instance = form.save(commit=False)
+    #             if not user.is_donor:
+    #                 print("donor")
+    #                 instance.is_receiver = True
+    #             else:
+    #                 print("receiver")
+    #                 instance.is_sender = True
+    #             instance.user_id = user.pk
+    #             instance.save()
+    #         else:
+    #             print(form.errors)
+    #             print(form.non_field_errors)
+    #         return redirect('chat-donor')
+    return render(request, 'chat_donor.html', {'chats':chats})
+
+
+def chat_donor(request):
+    if request.method  == 'GET':
+        chats =  Chat.objects.all()
+    return render(request, 'chat_receiver.html', {'chats':chats})
+
+
+
+
 

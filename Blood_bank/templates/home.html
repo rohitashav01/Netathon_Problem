@@ -211,14 +211,14 @@
                     Add a New Camp
                 </a>
             {% elif request.user.is_authenticated %}
+                {% if not request.user.is_donor %}
+                <a href="{% url 'donor-list' %}" class="btn btn-danger me-3 btn-rounded btn-lg">
+                    Availaible Donors
+                </a>
+                {% endif %}
                 <a href="{% url 'logout' %}" class="btn btn-danger me-3 btn-rounded btn-lg">
                     Logout
                 </a>
-                {% if not request.user.is_donor %}
-                    <a href="{% url 'donor-list' %}" class="btn btn-danger me-3 btn-rounded btn-lg">
-                        Availaible Donors
-                    </a>
-                {% endif %}
             {% else %}
                 <a href="{% url 'login' %}" class="btn btn-danger me-3 btn-rounded btn-lg">
                     Login
@@ -411,102 +411,7 @@
                 </div>
             </section>
         </div>
-        <div class="col-sm-6 col-md-6">
-            <!-- Material form register -->
-            <div class="card">
-
-                <h5 class="card-header danger-color white-text text-center py-4">
-                    <strong>REQUEST APPOINTMENT</strong>
-                </h5>
-
-                <!--Card content-->
-                <div class="card-body px-lg-5 pt-0">
-
-                    <!-- Form -->
-                    <form class="text-center" style="color: #757575;" action="#!">
-
-                        <div class="form-row">
-                            <div class="col">
-                                <!-- First name -->
-                                <div class="md-form">
-                                    <input type="text" id="materialRegisterFormFirstName" class="form-control">
-                                    <label for="materialRegisterFormFirstName">First name</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <!-- Last name -->
-                                <div class="md-form">
-                                    <input type="email" id="materialRegisterFormLastName" class="form-control">
-                                    <label for="materialRegisterFormLastName">Last name</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <!-- Email -->
-                                <div class="md-form">
-                                    <input type="email" id="materialRegisterFormEmail" class="form-control">
-                                    <label for="materialRegisterFormEmail">E-mail</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <!-- Phone Number -->
-                                <div class="md-form">
-                                    <input type="password" id="materialRegisterFormPhone" class="form-control"
-                                        aria-describedby="materialRegisterFormPhoneHelpBlock">
-                                    <label for="materialRegisterFormPhone">Phone number</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <!-- Date -->
-                                <div class="md-form">
-                                    <input type="date" id="materialRegisterFormDate" class="form-control">
-                                    <label for="materialRegisterFormEmail">Date</label>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <!-- Time -->
-                                <div class="md-form">
-                                    <input type="time" id="materialRegisterFormTime" class="form-control"
-                                        aria-describedby="materialRegisterFormPhoneHelpBlock">
-                                    <label for="materialRegisterFormPhone">Time</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="md-form">
-                            <textarea id="materialContactFormMessage" class="form-control md-textarea"
-                                rows="3"></textarea>
-                            <label for="materialContactFormMessage">Message</label>
-                        </div>
-
-                        <!-- Sign up button -->
-                        <button class="btn btn-danger btn-rounded btn-block my-4 waves-effect z-depth-0"
-                            type="submit">GET APPOINTMENT</button>
-
-                    </form>
-                    <!-- Form -->
-
-                </div>
-
-            </div>
-            <!-- Material form register -->
-        </div>
-    </div>
-    </div>
-
-    <!-- jumbotron -->
-    <div class="jumbotron jumbotron-fluid text-center">
-    <div class="container">
-        <h3 class="display-4">OUR VOLUNTEERS</h3>
-        <hr class="dots">
-        <p class="lead">The volunteers who give their talent and time to fulfill the mission.</p>
-    </div>
-    </div>
+     
     <!-- jumbotron -->
     <div class="container-fluid mb-5" id="container2">
     <div class="container">
@@ -597,7 +502,7 @@
         <h2 class="card-title h2">JOIN WITH US AND SAVE LIFE</h2>
 
         <div class="pt-2">
-            <button type="button" class="btn btn-danger btn-rounded">BECOME A VOLUNTEER</button>
+            <a href = "{% url 'new-user' %}" class="btn btn-danger btn-rounded">BECOME A DONOR</a>
         </div>
 
         <hr class="my-4 rgba-white-light">
@@ -636,10 +541,10 @@
                 <ul class="list-unstyled">
                     <li>
                         <a href="mailto:webmetry@post.com"><i
-                                class="fas fa-envelope-open mr-3"></i>webmetry@post.com</a>
+                                class="fas fa-envelope-open mr-3"></i>donor2you@gmail.com</a>
                     </li>
                     <li>
-                        <a href="#!"><i class="fas fa-location-arrow mr-3"></i>Agartala,Tripura 799130</a>
+                        <a href="#!"><i class="fas fa-location-arrow mr-3"></i>Chandigarh,Punjab 799130</a>
                     </li>
                     <li>
                         <a href="#!"><i class="fas fa-tty mr-3"></i>+91-123-456-7890</a>
@@ -647,36 +552,7 @@
                 </ul>
 
             </div>
-            <!-- Grid column -->
-
-            <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
-
-                <!-- Links -->
-                <h5 class="text-uppercase">Support Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a href="#!">Credits</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-        </div>
-        <!-- Grid row -->
-
-    </div>
+          
     <div class="container">
 
         <!-- Grid row-->

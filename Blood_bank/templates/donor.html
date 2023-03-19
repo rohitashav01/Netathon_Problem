@@ -83,7 +83,7 @@
                                 <p class="text-muted mb-0">Gender: {{u.gender}}</p>
                                 <p class="text-muted mb-0">Blood Group: {{u.blood_type}}</p>
                                 <br>
-                                <a href = "{% url 'chat-sender' %}" class = " btn btn-primary">Contact</a>
+                                <a href ='/donor/{{u.id}}/contact' class = " btn btn-primary">Contact</a>
                             </div>
                         </div>
                     </div>

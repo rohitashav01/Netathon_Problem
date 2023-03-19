@@ -35,7 +35,6 @@ def user_login(request):
     if request.method == 'POST':                           
         email = request.POST['email']
         password = request.POST['password']
-        
         user_main = authenticate(request,email=email,password=password)
         print(user_main)
         app_user = authenticate(request,email=email,password=password)
@@ -52,7 +51,6 @@ def user_login(request):
         else:
             raise Http404("email or password is incorrect")
     return render(request,'login.html',{})
-
 
 def user_logout(request):
     logout(request)
@@ -79,16 +77,28 @@ def admin_camp(request):
         return redirect('home')
     return render(request,'camp.html',{'form':form})
 
-
+#availaible camps
 def show_camps(request):
     camps = BloodCamp.objects.all()
     print(request.user)
     return render(request,'avail_camps.html', {'camps': camps})
 
+#register for the camp
+def register_camp(request):
+    user = ProfileUser.objects.filter(is_donor=True).values()
+    print(request.user)
+    for u  in user:
+        subject = 'Blood Donation Camp Registration'
+        message = f'Hello {request.user.username},You have successfull registered  for the camp'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [request.user.email]
+        print(recipient_list)
+        send_mail(subject,message,email_from,recipient_list)
+        return redirect('home')
+    return render(request,'avail_camps.html',{})
+
 def donor_list(request):
-    # import pdb;pdb.set_trace()
     user = ProfileUser.objects.filter(is_donor=True)
-    print(user)
     return render(request, 'donor.html', {'user':user})
 
 

@@ -8,112 +8,153 @@
 
     <title>Home Page</title>
     <style>
-      * {
-    margin: 0;
+     #container {
     padding: 0;
-    box-sizing: border-box;
-  }
-  .contact_us {
-    width: 1040px;
-    margin-top:40px;
-  }
-  .contact_us_form {
-    margin-top: 70px;
-    
-  }
-  textarea {
-    border: none;
-    border-bottom: 1px solid black;
-    margin-bottom: 70px;
-  }
-  input {
-    border: none;
-    border-bottom: 1px solid black;
-    margin-bottom: 30px;
-  }
-  input:focus {
-    border: none;
-    border-bottom: 1px solid black;
-  }  
-  input[type="submit"] {
-    width: 150px;
-    border: #c69f68;
-    background: orangered;
-    padding: 7px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
+}
+
+#container2 {
     margin-top: 10px;
+    padding: 0;
+}
+
+#prompt {
+    background-color: #eaeaea;
+}
+
+.dots {
+    color: #ff3547;
+    height: 3px;
+    border-width: 0 0 3px;
+    border-style: solid;
+    border-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" width="8" height="4"><circle fill="#{$color}" cx="1" cy="0.5" r="0.5"/></svg>') 0 0 100% repeat;
+    width: 150px;
+}
+
+.btn-rounded {
+    border-radius: 10em;
+}
+
+.streak {
+    position: relative;
+    display: block;
+    height: 250px;
+    overflow: hidden;
+    padding: 3rem;
+}
+
+.p-1 {
+    margin: 0.25rem !important;
+}
+
+.card-cascade .view.view-cascade {
+    border-radius: .25rem;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.view {
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+}
+
+.mask {
+    opacity: 0;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.view .mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-attachment: fixed;
+}
+
+.waves-effect {
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
-  }
-  .sidebar-content {
-    border: 1px solid orangered;
-    width: 250px;
-    margin-top:40px;
-    margin-bottom: 30px;
-    padding: 25px;
-  }
-  .p-undeline {
-    border-bottom: 3px solid orangered;
-    width: fit-content;
-  }
-  .footer {
-    background-color: #c7d8f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 10px;
-  }
-  @media (width < 380px) {
-    .logo {
-      width: 200px;
-      height: 25px;
-    }
-  }
-  
-  @media (width < 1400px) {
-    .contact_us {
-      width: 860px;
-    }
-  }
-  /* @media (width < 1250px) {
-    .contact_us {
-      width: 860px;
-    }
-  } */
-  @media (width < 1200px) {
-    .contact_us {
-      width: 680px;
-    }
-  }
-  @media (width < 580px) {
-    .contact_us {
-      width: 550px;
-    }
-  }
-  @media (width < 550px) {
-    .contact_us {
-      width: 520px;
-    }
-  }
-  @media (width < 500px) {
-    .contact_us {
-      width: 450px;
-    }
-  }
-  @media (width < 450px) {
-    .contact_us {
-      width: 400px;
-    }
-  }
-  @media (width < 400px) {
-    .contact_us {
-      width: 300px;
-    }
-  }
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rgba-white-slight,
+.rgba-white-slight:after {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-floating {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    width: 47px;
+    height: 47px;
+}
+
+.waves-effect {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-floating i {
+    font-size: 1.25rem;
+    line-height: 47px;
+    display: inline-block;
+    width: inherit;
+    color: #fff;
+    text-align: center;
+}
+
+.btn-fb {
+    color: #fff;
+    background-color: #3b5998 !important;
+}
+
+.btn-tw {
+    color: #fff;
+    background-color: #55acee !important;
+}
+
+.btn-instagram {
+    color: #fff;
+    background-color: #ec4a89 !important;
+}
+
+.card-cascade.narrower .view.view-cascade {
+    margin-top: -1.25rem;
+    margin-right: 4%;
+    margin-left: 4%;
+}
+.card-cascade.narrower {
+    margin-top: 1.25rem;
+}
+
   </style>
 </head>
 <body>
@@ -126,13 +167,13 @@
         <img
           src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg"
           alt="Blood Donor System Image"
-          height="60"
-          width="100"
+          height="80"
+          width="200"
           loading="lazy"
           style="margin-top: -1px;margin-left:-250px;"
         />
       </a>
-  
+      <h3>Donor2You</h3>
       <!-- Toggle button -->
       <button
         class="navbar-toggler"
@@ -158,34 +199,30 @@
   
         <div class="d-flex align-items-center">
         {% if request.user.is_superuser %}
-          <a href="{% url 'login' %}" class="btn btn-primary me-3">
+          <a href="{% url 'login' %}" class="btn btn-danger me-3 btn-rounded">
             Login
           </a>
-          <a href = "{% url 'new-user' %}" type="button" class="btn btn-primary me-3">
+          <a href = "{% url 'new-user' %}" type="button" class="btn btn-danger me-3 btn-rounded">
             Register
           </a>
-          <a href="{% url 'logout' %}" class="btn btn-primary me-3">
+          <a href="{% url 'logout' %}" class="btn btn-danger me-3 btn-rounded">
             Logout
          </a>
-         <a href="{% url 'camp' %}" class="btn btn-primary me-3">
+         <a href="{% url 'camp' %}" class="btn btn-danger me-3 btn-rounded">
             Add a New Camp
         </a>
         {% else %}
-            <a href="{% url 'login' %}" class="btn btn-primary me-3">
+            <a href="{% url 'login' %}" class="btn btn-danger me-3 btn-rounded">
                 Login
             </a>
-            <a href = "{% url 'new-user' %}" type="button" class="btn btn-primary me-3">
-                Register
-            </a>
-            <a href="{% url 'avail-camps' %}" class="btn btn-primary me-3">
-                Availaible Camps
-            </a>
-            <a href="{% url 'logout' %}" class="btn btn-primary me-3">
+            <a href="{% url 'logout' %}" class="btn btn-danger me-3 btn-rounded">
                 Logout
             </a>
-            <a href="{% url 'disease' %}" class="btn btn-primary me-3">
-                Diseases
-            </a>
+            {% if not request.user.is_donor %}
+                <a href="{% url 'donor-list' %}" class="btn btn-danger me-3 btn-rounded">
+                    Availaible Donors
+                </a>
+            {% endif %}
         {% endif %}
         </div>
       </div>
@@ -194,66 +231,500 @@
     <!-- Container wrapper -->
   </nav>
   <!-- Navbar -->
+   <!-- Jumbotron -->
+   <div class="card card-image img-fluid"
+   style="background-image: url('https://raw.githubusercontent.com/Joydeycdvs/Bonded/master/images/blooddonate.jpg'); background-size: cover;">
+   <div class="text-white text-center rgba-stylish-strong py-5 px-4">
+       <div class="py-5">
+           <!-- Content -->
+           <h4 class="card-title h4 my-4 py-2">DONATE BLOOD, SAVE LIFE!</h4>
+           <h1 class="mb-4 pb-2 px-md-5 mx-md-5">DONATE YOUR BLOOD AND INSPIRE<br>OTHERS TO DONATE.</h1>
+           <a href = "{% url 'new-user' %}" class="btn btn-danger">JOIN WITH US <i class="fas fa-arrow-right"></i></a>
+       </div>
+   </div>
+</div>
+<!-- Jumbotron -->
 
-
-  <div class="content container d-flex align-content-start flex-wrap">
-    <!-- Contact Form -->
-    <section>
-        <div class="container contact_us">
-            <h2>Contact Us</h2>
-            <p>Have a web or mobile app project in mind? Let's discuss making your project a reality.</p>
-
-            <div class="contact_us_form">
-                <form name="myForm"  method="post" action="#">
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" name="client-name" placeholder="Name*" >
-                        </div>
-                        <div class="col">
-                            <input type="email" name="email" placeholder="Email*">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" name="company-name" placeholder="Company Name*">
-                        </div>
-                        <div class="col">
-                            <input type="number" id= "numb" placeholder="+91">
-                        </div>
-                        <div class="row">
-                            <textarea name="" id="" placeholder="Message*"></textarea>
-                            
-                        </div>
-                    </div>
-                    <div class="submit_button">
-                        <input type="submit" value="Submit">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sidebar -->
-    <aside>
-        <div class="sidebar-content">
-            <h3>Hate Filling out Forms?</h3>
-            <p class="mb-5">Email us</p>
-            <h5 class="m-0">Request a Quote</h5>
-            <p class="mb-4 p-undeline">sales@netsolutions.com</p>
-            <h5 class="m-0">Careers</h5>
-            <p class="mb-4 p-undeline">careers@netsolutions.com</p>
-            <h5 class="m-0">Reference Checks / Misc. HR Queries</h5>
-            <p class="p-undeline">hr@netsolutions.com</p>
-        </div>
-    </aside>
+<div class="container-fluid" id="container">
+   <div class="card text-center" id="prompt">
+       <div class="card-body">
+           <h4 class="card-title"><strong>WE ARE HERE FOR HELPING PEOPLE</strong></h4>
+           <p class="card-text">You can give blood at any of our blood donation venues. We have several donor
+               centers
+               and visit other vanues on various occassions</p>
+           <a href=" {% url 'avail-camps' %} " class="btn btn-danger">Register For Camp</a>
+       </div>
+   </div>
 </div>
 
+
+<div class="container-fluid mt-4" id="container2">
+   <!-- jumbotron -->
+   <div class="jumbotron jumbotron-fluid text-center">
+       <div class="container">
+           <h3 class="display-4">DONATION PROCESS</h3>
+           <hr class="dots">
+           <p class="lead">The donation process from the time you arrive at center until the time you leave</p>
+       </div>
+   </div>
+   <!-- jumbotron -->
+   <div class="container-fluid mb-5">
+       <!-- Card deck -->
+       <div class="card-deck">
+
+           <!-- Card -->
+           <div class="card mb-3">
+               <!--Card image-->
+               <div class="view overlay">
+                   <img class="card-img-top" src="https://github.com/Joydeycdvs/Bonded/blob/master/images/registration.jpg?raw=true" alt="Card image cap">
+                   <a href="#!">
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!--Card content-->
+               <div class="card-body">
+
+                   <!--Title-->
+                   <h4 class="card-title">REGISTRATION</h4>
+                   <!--Text-->
+                   <p class="card-text">You need to complete a very simple registration form which contatins all
+                       required contact information to enter in the donation process.</p>
+               </div>
+
+           </div>
+           <!-- Card -->
+
+           <!-- Card -->
+           <div class="card mb-3">
+
+               <!--Card image-->
+               <div class="view overlay">
+                   <img class="card-img-top" src="https://github.com/Joydeycdvs/Bonded/blob/master/images/bloodcheck.jpg?raw=true" alt="Card image cap">
+                   <a href="#!">
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!--Card content-->
+               <div class="card-body">
+
+                   <!--Title-->
+                   <h4 class="card-title">SCREENING</h4>
+                   <!--Text-->
+                   <p class="card-text">A drop of blood from your finger will be taken for a simple test to ensure
+                       that your blood levels are proper enough for donation.</p>
+               </div>
+
+           </div>
+           <!-- Card -->
+
+           <!-- Card -->
+           <div class="card mb-3">
+
+               <!--Card image-->
+               <div class="view overlay">
+                   <img class="card-img-top" src="https://github.com/Joydeycdvs/Bonded/blob/master/images/donation.jpg?raw=true" alt="Card image cap">
+                   <a href="#!">
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!--Card content-->
+               <div class="card-body">
+
+                   <!--Title-->
+                   <h4 class="card-title">DONATION</h4>
+                   <!--Text-->
+                   <p class="card-text">After passing screening test successfully you will be directed to a donor
+                       bed for donation. It will take only 6-10 minutes.</p>
+               </div>
+
+           </div>
+           <!-- Card -->
+
+           <!-- Card -->
+           <div class="card mb-3">
+
+               <!--Card image-->
+               <div class="view overlay">
+                   <img class="card-img-top" src="https://github.com/Joydeycdvs/Bonded/blob/master/images/Refreshment.jpg?raw=true" alt="Card image cap">
+                   <a href="#!">
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!--Card content-->
+               <div class="card-body">
+
+                   <!--Title-->
+                   <h4 class="card-title">REFRESHMENT</h4>
+                   <!--Text-->
+                   <p class="card-text">you can also stay in the sitting room until you feel strong enough to leave
+                       the center. You will receive refreshments in the donation zone</p>
+               </div>
+
+           </div>
+           <!-- Card -->
+
+       </div>
+       <!-- Card deck -->
+   </div>
+</div>
+
+<div class="container-fluid mb-5">
+   <div class="row">
+       <div class="col-sm-6 col-md-6">
+
+           <!-- <img src="images/quote2.jpg" alt="" srcset="" class="img-fluid"> -->
+           <section class="p-1">
+               <div class="streak grey lighten-3">
+                   <div class="flex-center">
+                       <ul class="mb-0 list-unstyled">
+                           <li>
+                               <h2 class="h2-responsive"><i class="fas fa-quote-left" aria-hidden="true"></i> A
+                                   single pint can save three lives. A single gesture can create a million smiles.
+                                   <i class="fas fa-quote-right" aria-hidden="true"></i></h2>
+                           </li>
+
+                       </ul>
+                   </div>
+               </div>
+           </section>
+           <section class="p-1">
+               <div class="streak  lighten-3">
+                   <div class="flex-center">
+                       <ul class="mb-0 list-unstyled">
+                           <li>
+                               <h2 class="h2-responsive"><i class="fas fa-quote-left" aria-hidden="true"></i> Bring
+                                   a life back to power. Make blood donation your responsibility <i
+                                       class="fas fa-quote-right" aria-hidden="true"></i></h2>
+                           </li>
+                           <li class="mb-0">
+                               <h5 class="text-center font-italic mb-0">~ American Red Cross</h5>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </section>
+       </div>
+       <div class="col-sm-6 col-md-6">
+           <!-- Material form register -->
+           <div class="card">
+
+               <h5 class="card-header danger-color white-text text-center py-4">
+                   <strong>REQUEST APPOINTMENT</strong>
+               </h5>
+
+               <!--Card content-->
+               <div class="card-body px-lg-5 pt-0">
+
+                   <!-- Form -->
+                   <form class="text-center" style="color: #757575;" action="#!">
+
+                       <div class="form-row">
+                           <div class="col">
+                               <!-- First name -->
+                               <div class="md-form">
+                                   <input type="text" id="materialRegisterFormFirstName" class="form-control">
+                                   <label for="materialRegisterFormFirstName">First name</label>
+                               </div>
+                           </div>
+                           <div class="col">
+                               <!-- Last name -->
+                               <div class="md-form">
+                                   <input type="email" id="materialRegisterFormLastName" class="form-control">
+                                   <label for="materialRegisterFormLastName">Last name</label>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div class="form-row">
+                           <div class="col">
+                               <!-- Email -->
+                               <div class="md-form">
+                                   <input type="email" id="materialRegisterFormEmail" class="form-control">
+                                   <label for="materialRegisterFormEmail">E-mail</label>
+                               </div>
+                           </div>
+                           <div class="col">
+                               <!-- Phone Number -->
+                               <div class="md-form">
+                                   <input type="password" id="materialRegisterFormPhone" class="form-control"
+                                       aria-describedby="materialRegisterFormPhoneHelpBlock">
+                                   <label for="materialRegisterFormPhone">Phone number</label>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div class="form-row">
+                           <div class="col">
+                               <!-- Date -->
+                               <div class="md-form">
+                                   <input type="date" id="materialRegisterFormDate" class="form-control">
+                                   <label for="materialRegisterFormEmail">Date</label>
+                               </div>
+                           </div>
+                           <div class="col">
+                               <!-- Time -->
+                               <div class="md-form">
+                                   <input type="time" id="materialRegisterFormTime" class="form-control"
+                                       aria-describedby="materialRegisterFormPhoneHelpBlock">
+                                   <label for="materialRegisterFormPhone">Time</label>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div class="md-form">
+                           <textarea id="materialContactFormMessage" class="form-control md-textarea"
+                               rows="3"></textarea>
+                           <label for="materialContactFormMessage">Message</label>
+                       </div>
+
+                       <!-- Sign up button -->
+                       <button class="btn btn-danger btn-rounded btn-block my-4 waves-effect z-depth-0"
+                           type="submit">GET APPOINTMENT</button>
+
+                   </form>
+                   <!-- Form -->
+
+               </div>
+
+           </div>
+           <!-- Material form register -->
+       </div>
+   </div>
+</div>
+
+<!-- jumbotron -->
+<div class="jumbotron jumbotron-fluid text-center">
+   <div class="container">
+       <h3 class="display-4">OUR VOLUNTEERS</h3>
+       <hr class="dots">
+       <p class="lead">The volunteers who give their talent and time to fulfill the mission.</p>
+   </div>
+</div>
+<!-- jumbotron -->
+<div class="container-fluid mb-5" id="container2">
+   <div class="container">
+       <!-- Card deck -->
+       <div class="card-deck">
+            <!-- Card Narrower -->
+            <div class="card card-cascade narrower mb-6">
+
+               <!-- Card image -->
+               <div class="view view-cascade overlay">
+                   <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Others/men.jpg"
+                       alt="Card image cap">
+                   <a>
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!-- Card content -->
+               <div class="card-body card-body-cascade text-center">
+
+                   <!-- Title -->
+                   <h4 class="card-title"><strong>Joy Dey</strong></h4>
+                   <!-- Subtitle -->
+                   <h6 class="font-weight-bold indigo-text py-2">Web developer</h6>
+                   <!-- Text -->
+                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex,
+                       recusandae. Facere modi sunt, quod quibusdam.
+                   </p>
+
+                   <!-- Facebook -->
+                   <a type="button" class="btn-floating btn-small btn-fb"><i class="fab fa-facebook-f"></i></a>
+                   <!-- Twitter -->
+                   <a type="button" class="btn-floating btn-small btn-tw"><i class="fab fa-twitter"></i></a>
+                   <!-- Google + -->
+                   <a type="button" class="btn-floating btn-small btn-instagram"><i
+                           class="fab fa-instagram"></i></a>
+               </div>
+           </div>
+           <!-- Card Narrower -->
+
+           <!-- Card Narrower -->
+           <div class="card card-cascade narrower mb-6">
+
+               <!-- Card image -->
+               <div class="view view-cascade overlay">
+                   <img class="card-img-top"
+                       src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg"
+                       alt="Card image cap">
+                   <a>
+                       <div class="mask rgba-white-slight"></div>
+                   </a>
+               </div>
+
+               <!-- Card content -->
+               <div class="card-body card-body-cascade text-center">
+
+                   <!-- Title -->
+                   <h4 class="card-title"><strong>Kalyanjit Das</strong></h4>
+                   <!-- Subtitle -->
+                   <h6 class="font-weight-bold indigo-text py-2">Web developer</h6>
+                   <!-- Text -->
+                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex,
+                       recusandae. Facere modi sunt, quod quibusdam.
+                   </p>
+
+                   <!-- Facebook -->
+                   <a type="button" class="btn-floating btn-small btn-fb"><i class="fab fa-facebook-f"></i></a>
+                   <!-- Twitter -->
+                   <a type="button" class="btn-floating btn-small btn-tw"><i class="fab fa-twitter"></i></a>
+                   <!-- Google + -->
+                   <a type="button" class="btn-floating btn-small btn-instagram"><i
+                           class="fab fa-instagram"></i></a>
+               </div>
+           </div>
+           <!-- Card Narrower -->
+
+       </div>
+       <!-- Card deck -->
+   </div>
+</div>
+
+<div class="container-fluid" id="container2">
+   <!-- Jumbotron -->
+   <div class="jumbotron text-center grey darken-3 white-text mx-2 mb-5">
+
+       <!-- Title -->
+       <h2 class="card-title h2">JOIN WITH US AND SAVE LIFE</h2>
+
+       <div class="pt-2">
+           <button type="button" class="btn btn-danger btn-rounded">BECOME A VOLUNTEER</button>
+       </div>
+
+       <hr class="my-4 rgba-white-light">
+   </div>
+   <!-- Jumbotron -->
+</div>
+
+
 <!-- Footer -->
-<footer>
-    <div class="container-fluid footer">
-        &copy; 2023 Net Solutions. All Rights Reserved.
-    </div>
+<footer class="page-footer font-small danger-color pt-4">
+
+   <!-- Footer Links -->
+   <div class="container-fluid text-center text-md-left">
+
+       <!-- Grid row -->
+       <div class="row">
+
+           <!-- Grid column -->
+           <div class="col-md-6 mt-md-0 mt-3">
+
+               <!-- Content -->
+               <h5 class="text-uppercase">Lets make all Bonded</h5>
+               <p></p>
+
+           </div>
+           <!-- Grid column -->
+
+           <hr class="clearfix w-100 d-md-none pb-3">
+
+           <!-- Grid column -->
+           <div class="col-md-3 mb-md-0 mb-3">
+
+               <!-- Links -->
+               <h5 class="text-uppercase">Contact Us</h5>
+
+               <ul class="list-unstyled">
+                   <li>
+                       <a href="mailto:webmetry@post.com"><i
+                               class="fas fa-envelope-open mr-3"></i>webmetry@post.com</a>
+                   </li>
+                   <li>
+                       <a href="#!"><i class="fas fa-location-arrow mr-3"></i>Agartala,Tripura 799130</a>
+                   </li>
+                   <li>
+                       <a href="#!"><i class="fas fa-tty mr-3"></i>+91-123-456-7890</a>
+                   </li>
+               </ul>
+
+           </div>
+           <!-- Grid column -->
+
+           <!-- Grid column -->
+           <div class="col-md-3 mb-md-0 mb-3">
+
+               <!-- Links -->
+               <h5 class="text-uppercase">Support Links</h5>
+
+               <ul class="list-unstyled">
+                   <li>
+                       <a href="#!">Link 1</a>
+                   </li>
+                   <li>
+                       <a href="#!">Link 2</a>
+                   </li>
+                   <li>
+                       <a href="#!">Link 3</a>
+                   </li>
+                   <li>
+                       <a href="#!">Credits</a>
+                   </li>
+               </ul>
+
+           </div>
+           <!-- Grid column -->
+
+       </div>
+       <!-- Grid row -->
+
+   </div>
+   <div class="container">
+
+       <!-- Grid row-->
+       <div class="row">
+
+           <!-- Grid column -->
+           <div class="col-md-12 py-5">
+               <div class="mb-5 flex-center">
+
+                   <!-- Facebook -->
+                   <a class="fb-ic">
+                       <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                   </a>
+                   <!-- Twitter -->
+                   <a class="tw-ic">
+                       <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                   </a>
+                   <!-- Google +-->
+                   <a class="gplus-ic">
+                       <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                   </a>
+                   <!--Linkedin -->
+                   <a class="li-ic">
+                       <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                   </a>
+                   <!--Instagram-->
+                   <a class="ins-ic">
+                       <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+                   </a>
+                   <!--Pinterest-->
+                   <a class="pin-ic">
+                       <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+                   </a>
+               </div>
+           </div>
+           <!-- Grid column -->
+
+       </div>
+       <!-- Grid row-->
+
+   </div>
+   <!-- Footer Links -->
+
+   <!-- Copyright -->
+   <div class="footer-copyright text-center py-3">© 2019 Copyright:
+       <a href="#"> Bonded</a> All Rights Reserved
+   </div>
+   <!-- Copyright -->
+
 </footer>
+<!-- Footer -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"  integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"crossorigin="anonymous"></script>
   

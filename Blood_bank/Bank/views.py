@@ -2,10 +2,11 @@ from django.conf import settings
 from django.shortcuts import render,redirect
 from django.http import Http404
 from django.contrib.auth import login,logout,authenticate
-# Create your views here.
 from Bank.forms import AppUserForm,DiseaseForm, ChatForm
 from .models import ProfileUser,BloodCamp,Diseases, Chat
 from django.core.mail import send_mail
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 def home_page(request):
     return render(request,'home.html',{})
@@ -52,10 +53,12 @@ def user_login(request):
             raise Http404("email or password is incorrect")
     return render(request,'login.html',{})
 
+#user logout
 def user_logout(request):
     logout(request)
     return redirect('home')
 
+#add camps
 def admin_camp(request):
     form = BloodCamp()
     if request.method == 'POST':
@@ -79,84 +82,52 @@ def admin_camp(request):
 
 #availaible camps
 def show_camps(request):
-    camps = BloodCamp.objects.all()
-    print(request.user)
+    user = Diseases.objects.all()
+    if request.user.is_authenticated:
+        for u in user:
+            if u.aids == False and u.asthma == False and u.bleeding_disorder == False and u.cancer == False and u.heart_disease == False and u.hepatitis_b_or_c == False and u.mad_cow:
+                camps = BloodCamp.objects.all()
+                print(request.user)
+            else:
+                raise PermissionDenied('You cannot donate blood')
     return render(request,'avail_camps.html', {'camps': camps})
 
 #register for the camp
 def register_camp(request):
-    user = ProfileUser.objects.filter(is_donor=True).values()
-    print(request.user)
-    for u  in user:
-        subject = 'Blood Donation Camp Registration'
-        message = f'Hello {request.user.username},You have successfull registered  for the camp'
-        email_from = settings.EMAIL_HOST_USER
-        recipient_list = [request.user.email]
-        print(recipient_list)
-        send_mail(subject,message,email_from,recipient_list)
-        return redirect('home')
+    demo = Diseases.objects.all()
+    if request.user.is_authenticated:
+        for u in demo:
+            if u.aids == False and u.asthma == False and u.bleeding_disorder == False and u.cancer == False and u.heart_disease == False and u.hepatitis_b_or_c == False and u.mad_cow:
+                    user = ProfileUser.objects.filter(is_donor=True).values()
+                    for u  in user:
+                        subject = 'Blood Donation Camp Registration'
+                        message = f'Hello {request.user.username},You have successfull registered  for the camp'
+                        email_from = settings.EMAIL_HOST_USER
+                        recipient_list = [request.user.email]
+                        print(recipient_list)
+                        send_mail(subject,message,email_from,recipient_list)
+                        return redirect('home')
+            else:
+                raise PermissionDenied('You cannot donate blood')
     return render(request,'avail_camps.html',{})
 
+#availaible list of donors
 def donor_list(request):
     user = ProfileUser.objects.filter(is_donor=True)
     return render(request, 'donor.html', {'user':user})
 
-
-def chat_communication(request):
-    form  = ChatForm()
-    print(request.method)
-    if request.method  == 'POST':
-            form = ChatForm(request.POST)
-            print(request.user.id)
-            user = ProfileUser.objects.get(id=request.user.id)
-            print(user)
-            if form.is_valid():
-                instance = form.save(commit=False)
-                if not user.is_donor:
-                    print("donor")
-                    instance.is_receiver = True
-                else:
-                    print("receiver")
-                    instance.is_sender = True
-                instance.user_id = user.pk
-                instance.save()
-            else:
-                print(form.errors)
-                print(form.non_field_errors)
-            return redirect('chat-receiver')
-    return render(request, 'chat.html', {'form':form})
-
-
-def chat_receiver(request):
-    if request.method  == 'GET':
-        chats =  Chat.objects.all()
-    # elif request.method  == 'POST':
-    #         form = ChatForm(request.POST)
-    #         print(request.user.id)
-    #         user = ProfileUser.objects.get(id=request.user.id)
-    #         print(user)
-    #         if form.is_valid():
-    #             instance = form.save(commit=False)
-    #             if not user.is_donor:
-    #                 print("donor")
-    #                 instance.is_receiver = True
-    #             else:
-    #                 print("receiver")
-    #                 instance.is_sender = True
-    #             instance.user_id = user.pk
-    #             instance.save()
-    #         else:
-    #             print(form.errors)
-    #             print(form.non_field_errors)
-    #         return redirect('chat-donor')
-    return render(request, 'chat_donor.html', {'chats':chats})
-
-
-def chat_donor(request):
-    if request.method  == 'GET':
-        chats =  Chat.objects.all()
-    return render(request, 'chat_receiver.html', {'chats':chats})
-
+def contact_donor(request,**kwargs):
+    if id:=kwargs.get('id'):
+        obj = ProfileUser.objects.get(id=id)
+        if request.user.is_authenticated:
+            subject = 'Blood Needed'
+            message = f'Hello {obj.username}, {request.user.username} has requested for blood which matches your blood type'
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [obj.email]
+            print(recipient_list)
+            send_mail(subject,message,email_from,recipient_list)
+        return redirect('home')
+    return render(request,'donor.html',{})
 
 
 

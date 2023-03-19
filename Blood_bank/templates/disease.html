@@ -14,13 +14,16 @@
       <!-- Navbar brand -->
       <a class="navbar-brand me-2" href="https://www.netsolutions.com/">
         <img
-          src="https://www.netsolutions.com/assets/images/net_solutions_logo_black.svg"
-          alt="Logo of Net Solutions India Pvt. Ltd."
-          height="16"
+          src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg"
+          alt="Blood Donor System Image"
+          height="80"
+          width="200"
           loading="lazy"
-          style="margin-top: -1px;"
+          style="margin-top: -1px;margin-left:-250px;"
+          class = "rounded-circle"
         />
       </a>
+      <h3>Donor2You</h3>
   
       <!-- Toggle button -->
       <button
@@ -45,6 +48,19 @@
         </ul>
         <!-- Left links -->
         </div>
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <!-- Left links -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <!-- <a class="nav-link" href="#">Dashboard</a> -->
+            </li>
+          </ul>
+          <!-- Left links -->
+            <a href = "{% url 'home' %}" type="button" class="btn btn-danger me-3 btn-rounded">
+              Home
+            </a>
+          </div>
+        </div>
       </div>
       <!-- Collapsible wrapper -->
     </div>
@@ -58,10 +74,9 @@
               <div class="card text-black" style="border-radius: 25px;">
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                        
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1"> 
                         {% if request.user.is_authenticated %}
-                             <p>Welcome: {{request.user.username}}</p>
+                             <h2><em>Welcome: {{request.user.username}}</em></p>
                         {% endif %}
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Mark if you have any diseases</p>
                      <form action="" method="post">
@@ -138,7 +153,7 @@
                     </div>
                     <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
       
-                      <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
+                      <img src="https://mir-s3-cdn-cf.behance.net/projects/404/c47526102644041.Y3JvcCw0MDAxLDMxMjksMCw0MzU.jpg" class="img-fluid rounded-circle" alt="Sample image" width="800" height="800">
       
                     </div>
                   </div>

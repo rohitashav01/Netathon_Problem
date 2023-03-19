@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps,user_disease,donor_list, chat_communication
+from Bank.views import add_user,user_login,user_logout,home_page,admin_camp,show_camps,user_disease,donor_list, chat_communication,register_camp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home_page,name='home'),
     path('blood-bank/register',add_user,name='new-user'),
     path('blood-bank/disease',user_disease,name='disease'),
     path('blood-bank/login',user_login,name='login'),
+    path('blood-camp/register',register_camp,name='register-camp'),
     path('blood-bank/logout',user_logout,name='logout'),
     path('blood-bank/admin_camp',admin_camp,name='camp'),
     path('blood_bank/availaible_camps',show_camps,name='avail-camps'),
